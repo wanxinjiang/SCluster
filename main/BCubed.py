@@ -1,13 +1,6 @@
 import numpy as np
 from scipy.sparse import coo_matrix
 
-__all__ = ['bcubed', 'conditional_entropy', 'contingency_matrix', 'der',
-           'goodman_kruskal_tau', 'mutual_information']
-
-
-EPS = np.finfo(float).eps
-
-
 def contingency_matrix(ref_labels, sys_labels):
     """Return contingency matrix between ``ref_labels`` and ``sys_labels``."""
     ref_classes, ref_class_inds = np.unique(ref_labels, return_inverse=True)

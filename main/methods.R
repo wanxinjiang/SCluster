@@ -8,7 +8,8 @@ sc3_SCluster <- function(c_nums=NULL,inputmatrix,save.results=FALSE){
     sc3out <- SingleCellExperiment(
     assays = list(
         counts = as.matrix(inputmatrix),
-        logcounts = log2(as.matrix(inputmatrix)+1)
+        # logcounts = log2(as.matrix(inputmatrix)+1)
+        logcounts=as.matrix(inputmatrix)
     )
     )
     rowData(sc3out)$feature_symbol <-rownames(sc3out)
@@ -29,12 +30,11 @@ sc3_SCluster <- function(c_nums=NULL,inputmatrix,save.results=FALSE){
 
 ## SOUP ##
 soup_SCluster<- function(c_nums=NULL,inputmatrix,save.results=FALSE){
-
     soupout <- NULL
 
     soup_counts<-t(as.matrix(inputmatrix))
-    log.expr = log2(scaleRowSums(soup_counts)*(10^6) + 1)
-    soupout = SOUP(log.expr,Ks=c_nums, type="log")
+    # log.expr = log2(scaleRowSums(soup_counts)*(10^6) + 1)
+    soupout = SOUP(soup_counts,Ks=c_nums, type="log")
 
     if(save.results == TRUE){
         saveRDS(soupout, file = "soup_SCluster.rds")
@@ -56,17 +56,16 @@ simlr_SCluster <- function(c_nums=NULL,inputmatrix,save.results=FALSE){
     # res_example = SIMLR_Estimate_Number_of_Clusters(counts_matrix,NUMC = NUMC,cores.ratio = 0)
     # NUMC[which.min(res_example$K2)]
     # K=NUMC[which.min(res_example$K1)]
-
-    print(dim(counts_matrix))
-    if (dim(counts_matrix)[2] < 1000) {
+    
+    if (dim(counts_matrix)[2] < 500) {
     simlrout <- SIMLR(counts_matrix, c = c_nums, cores.ratio = 0)
         } else {
-    simlrout <- SIMLR_Large_Scale(counts_matrix, c = c_nums)
-  }
+    simlrout <- SIMLR_Large_Scale(counts_matrix, c = c_nums,kk=10)
+    }
+
     if(save.results == TRUE){
         saveRDS(simlrout, file = "soup_SCluster.rds")
     }
-
 
     simlrout <- as.data.frame(simlrout$y$cluster)
     return(simlrout)
@@ -76,7 +75,7 @@ simlr_SCluster <- function(c_nums=NULL,inputmatrix,save.results=FALSE){
 cidr_SCluster<-function(c_nums=NULL,inputmatrix,save.results=FALSE){
 
     cidrout <- NULL
-    cidrout <- scDataConstructor(as.matrix(inputmatrix))
+    cidrout <- scDataConstructor(as.matrix(inputmatrix),tagType = "raw")
     cidrout <- determineDropoutCandidates(cidrout)
     cidrout <- wThreshold(cidrout)
     cidrout <- scDissim(cidrout)
@@ -84,13 +83,13 @@ cidr_SCluster<-function(c_nums=NULL,inputmatrix,save.results=FALSE){
     cidrout <- nPC(cidrout)
 
     ### Define nPC
-    # if(!is.null(nPC.cidr)) {
-    #     cidrout@nPC <- nPC.cidr
-    # } else {
-    #     nPC.cidr <- cidrout@nPC
-    # }
+    if(!is.null(nPC.cidr)) {
+        cidrout@nPC <- nPC.cidr
+    } else {
+        nPC.cidr <- cidrout@nPC
+    }
 
-    cidrout <- scCluster(cidrout,nCluster=c_nums)
+    cidrout <- scCluster(cidrout,nCluster=c_nums,nPC = nPC.cidr)
 
     if(save.results == TRUE){
         saveRDS(cidrout, file = "cidr_SCluster.rds")
@@ -145,7 +144,7 @@ sharp_SCluster <- function(c_nums=NULL,inputmatrix,save.results=FALSE){
     if('try-error' %in% class(sharpout)){
         sharpout=SHARP(counts)
     }
-
+    
     if(save.results == TRUE){
         saveRDS(sharpout, file = "sharp_SCluster.rds")
     }
@@ -166,15 +165,7 @@ seurat_SCluster <- function(c_nums=NULL,inputmatrix,save.results=FALSE){
     seuratout <- ScaleData(seuratout, features = all.genes)
     seuratout<- RunPCA(seuratout, features = VariableFeatures(object = seuratout))
     seuratout <- FindNeighbors(seuratout, dims = 1:10)
-    for (i in 1:100){
-        seuratout  <- FindClusters(seuratout ,resolution=i*0.02)
-        if (length(unique(seuratout@active.ident))==c_nums){
-            break
-        }
-        if (i==100){
-        seuratout <- FindClusters(seuratout)
-        }
-    }
+    seuratout <- FindClusters(seuratout)
     if(save.results == TRUE){
         saveRDS(seuratout, file = "seurat_SCluster.rds")
     }
