@@ -1,5 +1,6 @@
 
-wegt 
+#SCluster
+SCluster: An integrated clustering framework for single-cell RNA-seq data
 
 ```
 mkdir single_cell
