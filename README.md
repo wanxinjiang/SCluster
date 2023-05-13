@@ -42,6 +42,7 @@ Actually do the filtering by slicing the AnnData object.
 adata = adata[adata.obs.n_genes_by_counts < 2500, :]
 adata = adata[adata.obs.pct_counts_mt < 5, :]
 ```
+```
 adata.raw=adata
 ```
 Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.
@@ -54,16 +55,44 @@ sc.pp.log1p(adata)
 sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
 adata= adata[:, adata.var.highly_variable]
 adata
-```
 View of AnnData object with n_obs × n_vars = 3819 × 3256
     obs: 'annotation', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt'
     var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'
     uns: 'log1p', 'hvg'
+```
 ### Performing SCluster clustering
 ```
 adata=SCluster(adata=adata,\
                sc3=True,cidr=True,sharp=True,scanpy=True,\
                soup=True,seurat=True,simlr=True,RaceID3=True,sincera=True)
-```
 Performing SCluster clustering... 
 Start estimate number of clusters ...
+The number of Clusters is 10.
+
+Raw expression
+3819 samples 16804 features
+
+After selecting highly variable
+3819 samples 3256 features
+
+Start SIMLR clustering...
+Start Seurat clustering...
+Start RaceID3 clustering...
+Start SC3 clustering...
+Start SOUP clustering...
+Start CIDR clustering...
+Start SINCERA clustering...
+Start SHARP clustering...
+Start Scanpy  clustering...
+
+......
+
+SCluster done...
+SCluster takes 2000.8017766475677 secs
+AnnData object with n_obs × n_vars = 3819 × 3256
+    obs: 'annotation', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', 'sc3', 'soup', 'cidr', 'sincera', 'sharp', 'scanpy', 'seurat', 'RaceID3', 'simlr', 'SCluster'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'
+    uns: 'log1p', 'hvg', 'neighbors', 'umap'
+    obsm: 'X_pca', 'X_umap'
+    obsp: 'distances', 'connectivities'
+```
