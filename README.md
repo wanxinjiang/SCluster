@@ -77,3 +77,5 @@ AnnData object with n_obs × n_vars = 3819 × 3256
 >>>adjusted_rand_score(adata.obs['annotation'],adata.obs['SCluster'])
 0.9688839138590054
 ```
+### Plot the clusters.
+
