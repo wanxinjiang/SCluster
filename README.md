@@ -65,6 +65,7 @@ View of AnnData object with n_obs × n_vars = 3819 × 3256
 adata=SCluster(adata=adata,\
                sc3=True,cidr=True,sharp=True,scanpy=True,\
                soup=True,seurat=True,simlr=True,RaceID3=True,sincera=True)
+         
 Performing SCluster clustering... 
 Start estimate number of clusters ...
 The number of Clusters is 10.
