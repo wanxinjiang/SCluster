@@ -83,3 +83,5 @@ adata.obs['annotation']=adata.obs['annotation'].astype('category')
 sc.pl.umap(adata,color=['annotation','SCluster','soup','sharp','scanpy','seurat','sc3','sincera','cidr','simlr','RaceID3'],legend_fontsize=8,s=12,frameon=False)
 ```
 ![这是图片](/Examples/umap.png "umap")
+### Subsequent related analysis 
+You can use [Markdown语法](https://scanpy.readthedocs.io/en/stable/ "SCANPY") for it
