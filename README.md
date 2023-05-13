@@ -78,4 +78,4 @@ AnnData object with n_obs × n_vars = 3819 × 3256
 0.9688839138590054
 ```
 ### Plot the clusters.
-
+![这是图片](/Examples/umap.png "umap")
