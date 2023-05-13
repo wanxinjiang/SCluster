@@ -2,7 +2,7 @@
 # SClustering
 SCluster: An integrated clustering framework for single-cell RNA-seq data
 ## Dependencies
-It was conducted by R v4.2.2.\n
+It was conducted by R v4.2.2.
 Following R packages should be installed.
 * Seurat
 * SC3
