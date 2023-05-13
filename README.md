@@ -74,7 +74,6 @@ AnnData object with n_obs × n_vars = 3819 × 3256
     obsp: 'distances', 'connectivities'
 ```
 ```
-NMI=adjusted_rand_score(adata.obs['annotation'],adata.obs['SCluster'])
->>>NMI
+>>>adjusted_rand_score(adata.obs['annotation'],adata.obs['SCluster'])
 0.9688839138590054
 ```
