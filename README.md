@@ -3,7 +3,7 @@
 SCluster: An integrated clustering framework for single-cell RNA-seq data
 ## Dependencies
 It was conducted by R v4.2.2.\
-Following R packages should be installed.\
+Following R packages should be installed.
 * Seurat
 * SC3
 * SIMLR
@@ -11,8 +11,8 @@ Following R packages should be installed.\
 * cidr
 * SIMLR
 * SHARP
-* SINCERA\
-Following python packages should be installed.\
+* SINCERA
+Following python packages should be installed.
 * scanpy
 * pandas
 * numpy
