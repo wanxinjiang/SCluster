@@ -18,8 +18,6 @@ import scanpy as sc
 from SCluster import SCluster
 import matplotlib.pyplot as plt
 from sklearn.metrics.cluster import adjusted_rand_score
-from sklearn.metrics.cluster import normalized_mutual_info_score
-from sklearn.metrics.cluster import fowlkes_mallows_score
 ```
 ### Import data
 ```
