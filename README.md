@@ -85,6 +85,7 @@ AnnData object with n_obs × n_vars = 3819 × 3256
     obsm: 'X_pca', 'X_umap'
     obsp: 'distances', 'connectivities'
 ```
+### ARI
 ```
 >>>adjusted_rand_score(adata.obs['annotation'],adata.obs['SCluster'])
 0.9688839138590054
