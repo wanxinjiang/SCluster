@@ -84,4 +84,4 @@ sc.pl.umap(adata,color=['annotation','SCluster','soup','sharp','scanpy','seurat'
 ```
 ![这是图片](/Examples/umap.png "umap")
 ### Subsequent related analysis 
-You can use [Markdown语法](https://scanpy.readthedocs.io/en/stable/ "SCANPY") for it
+You can use [SCANPY](https://scanpy.readthedocs.io/en/stable/ "SCANPY") for it.
