@@ -1,5 +1,6 @@
 
-#SCluster
+##SCluster
+
 SCluster: An integrated clustering framework for single-cell RNA-seq data
 
 ```
