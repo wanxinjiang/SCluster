@@ -1,6 +1,6 @@
 
 # SClustering
-SCluster: An integrated clustering framework for single-cell RNA-seq data
+An integrated clustering framework for single-cell RNA-seq data includes Seurat, SC3, SIMLR, RaceID3, CIDR, SIMLR, SHARP, SINCERA, and Scanpy.
 ## Dependencies
 It was conducted by R v4.2.2.\
 Following R packages should be installed.
