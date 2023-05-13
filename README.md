@@ -57,7 +57,7 @@ adata = adata[adata.obs.pct_counts_mt < 5, :]
 ```
 adata.raw=adata
 ```
-Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.
+Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.\
 Logarithmize the data.\
 Identify highly-variable genes.\
 Actually do the filtering.
