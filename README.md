@@ -11,7 +11,8 @@ Following R packages should be installed.
 * cidr
 * SIMLR
 * SHARP
-* SINCERA\
+* SINCERA
+
 Following python packages should be installed.
 * scanpy
 * pandas
