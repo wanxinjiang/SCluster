@@ -77,5 +77,11 @@ AnnData object with n_obs × n_vars = 3819 × 3256
 >>>adjusted_rand_score(adata.obs['annotation'],adata.obs['SCluster'])
 0.9688839138590054
 ```
-### Plot the clusters.
+### Plot the clusters
+```
+plt.rcParams['figure.dpi']=300
+sc.set_figure_params(fontsize=10)
+adata.obs['annotation']=adata.obs['annotation'].astype('category')
+sc.pl.umap(adata,color=['annotation','SCluster','soup','sharp','scanpy','seurat','sc3','sincera','cidr','simlr','RaceID3'],legend_fontsize=8,s=12,frameon=False)
+```
 ![这是图片](/Examples/umap.png "umap")
