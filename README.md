@@ -23,8 +23,8 @@ from sklearn.metrics.cluster import fowlkes_mallows_score
 ```
 ### Import data
 ```
-adata=anndata.read('./datasets/Trachea.h5ad')\
-adata
+adata=anndata.read('./datasets/Trachea.h5ad')
+>>>adata
 AnnData object with n_obs × n_vars = 4798 × 17197
     obs: 'annotation'
 ```
@@ -54,7 +54,7 @@ sc.pp.normalize_total(adata, target_sum=1e4)
 sc.pp.log1p(adata)
 sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
 adata= adata[:, adata.var.highly_variable]
-adata
+>>>adata
 View of AnnData object with n_obs × n_vars = 3819 × 3256
     obs: 'annotation', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt'
     var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'
@@ -65,7 +65,7 @@ View of AnnData object with n_obs × n_vars = 3819 × 3256
 adata=SCluster(adata=adata,\
                sc3=True,cidr=True,sharp=True,scanpy=True,\
                soup=True,seurat=True,simlr=True,RaceID3=True,sincera=True)
-adata
+>>>adata
 AnnData object with n_obs × n_vars = 3819 × 3256
     obs: 'annotation', 'n_genes', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt', 'sc3', 'soup', 'cidr', 'sincera', 'sharp', 'scanpy', 'seurat', 'RaceID3', 'simlr', 'SCluster'
     var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'
@@ -73,3 +73,4 @@ AnnData object with n_obs × n_vars = 3819 × 3256
     obsm: 'X_pca', 'X_umap'
     obsp: 'distances', 'connectivities'
 ```
+
