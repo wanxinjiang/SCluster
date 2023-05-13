@@ -2,8 +2,8 @@
 # SClustering
 SCluster: An integrated clustering framework for single-cell RNA-seq data
 ## Dependencies
-It was conducted by R v4.2.2.
-Following R packages should be installed.
+It was conducted by R v4.2.2.\
+Following R packages should be installed.\
 * Seurat
 * SC3
 * SIMLR
@@ -11,8 +11,8 @@ Following R packages should be installed.
 * cidr
 * SIMLR
 * SHARP
-* SINCERA.
-Following python packages should be installed.
+* SINCERA\
+Following python packages should be installed.\
 * scanpy
 * pandas
 * numpy
@@ -56,9 +56,9 @@ adata = adata[adata.obs.pct_counts_mt < 5, :]
 ```
 adata.raw=adata
 ```
-Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.
-Logarithmize the data.
-Identify highly-variable genes.
+Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.\
+Logarithmize the data.\
+Identify highly-variable genes.\
 Actually do the filtering.
 ```
 sc.pp.normalize_total(adata, target_sum=1e4)
