@@ -57,14 +57,20 @@ adata = adata[adata.obs.pct_counts_mt < 5, :]
 ```
 adata.raw=adata
 ```
-Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.\
-Logarithmize the data.\
-Identify highly-variable genes.\
-Actually do the filtering.
+Total-count normalize (library-size correct) the data matrix X to 10,000 reads per cell, so that counts become comparable among cells.
 ```
 sc.pp.normalize_total(adata, target_sum=1e4)
+```
+Logarithmize the data.
+```
 sc.pp.log1p(adata)
+```
+Identify highly-variable genes.
+```
 sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
+```
+Actually do the filtering.
+```
 adata= adata[:, adata.var.highly_variable]
 >>>adata
 View of AnnData object with n_obs × n_vars = 3819 × 3256
