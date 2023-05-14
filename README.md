@@ -35,7 +35,7 @@ from sklearn.metrics.cluster import adjusted_rand_score
 ```
 ### Import data
 ```
-adata=anndata.read('./datasets/Trachea.h5ad')
+adata=anndata.read('./Datasets/Trachea.h5ad')
 >>>adata
 AnnData object with n_obs × n_vars = 4798 × 17197
     obs: 'annotation'
