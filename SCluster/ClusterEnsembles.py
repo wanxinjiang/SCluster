@@ -1,7 +1,3 @@
-# ClusterEnsembles.py
-#   Author: Takehiro Sano
-#   Contact: tsano430@gmail.com
-#   License: MIT License
 import os
 import warnings
 from typing import Optional

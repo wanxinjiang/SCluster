@@ -4,7 +4,6 @@ import time
 import pandas as pd 
 import numpy as np
 import scanpy as sc
-import anndata2ri
 import itertools
 from sklearn.metrics.cluster import adjusted_rand_score
 from sklearn.metrics.cluster import normalized_mutual_info_score
