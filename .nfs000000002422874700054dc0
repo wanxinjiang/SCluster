@@ -26,7 +26,8 @@ pandas2ri.activate()
 
 rpy2_logger.setLevel(50)
 
-robjects.r.source(os.path.dirname(__file__)+"/Rscript/methods.R")
+# lock=Lock()
+robjects.r.source("./SCluster/methods.R")
 
 def SClustering(adata,c_nums=None,sc3=False,soup=False,seurat=False,RaceID3=False,
                 scanpy=False,cidr=False,simlr=False,sincera=False,sharp=False,results=False):
@@ -78,17 +79,17 @@ def SClustering(adata,c_nums=None,sc3=False,soup=False,seurat=False,RaceID3=Fals
     ##Seurat、RacID3、SIMLR## 
     if simlr:
         print("Start SIMLR clustering...",flush=True)
-        simlr_args = ["Rscript",'--vanilla', os.path.dirname(__file__)+"/Rscript/run_simlr.R",]+[_simlrout_csv,str(c_nums),_matrix]
+        simlr_args = ["Rscript",'--vanilla', "/nfs_genome1/wanxinjiang/SCluster/SCluster/Rscript/run_simlr.R",]+[_simlrout_csv,str(c_nums),_matrix]
         subprocess.Popen(simlr_args)
         
     if seurat:
         print("Start Seurat clustering...",flush=True)
-        seurat_args = ["Rscript",'--vanilla', os.path.dirname(__file__)+"/Rscript/run_seurat.R",]+[_seuratout_csv,str(c_nums),_matrix_raw]
+        seurat_args = ["Rscript",'--vanilla', "/nfs_genome1/wanxinjiang/SCluster/SCluster/Rscript/run_seurat.R",]+[_seuratout_csv,str(c_nums),_matrix_raw]
         subprocess.Popen(seurat_args)
         
     if RaceID3:
         print("Start RaceID3 clustering...",flush=True)
-        RaceID3_args = ["Rscript",'--vanilla', os.path.dirname(__file__)+"/Rscript/run_RaceID3.R",]+[_RaceID3out_csv,str(c_nums),_matrix_raw]
+        RaceID3_args = ["Rscript",'--vanilla', "/nfs_genome1/wanxinjiang/SCluster/SCluster/Rscript/run_RaceID3.R",]+[_RaceID3out_csv,str(c_nums),_matrix_raw]
         subprocess.Popen(RaceID3_args)
     
     multi_res=[]
